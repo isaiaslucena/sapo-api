@@ -1,6 +1,6 @@
-from flask import Flask
+from flask import Flask, jsonify
 app = Flask(__name__)
 
 @app.route('/')
 def response():
-    return 'Hello, from flask app!'
+	return jsonify(message='Hello, from flask app!')
