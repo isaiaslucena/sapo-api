@@ -11,7 +11,6 @@ jobs:
     strategy:
       matrix:
         python-version: [ 'pypy-3.6' ]
-    name: deploy on heroku
     steps:
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.6.8
