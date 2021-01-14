@@ -1,0 +1,24 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ 'pypy-3.6' ]
+    name: heroku deploy
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.6.8
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "sapo-production-api"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          buildpack: "https://github.com/heroku/heroku-buildpack-python#latest"
+          healthcheck: "https://sapo-production-api.herokuapp.com/"
+          delay: 5
