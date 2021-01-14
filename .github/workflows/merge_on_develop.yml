@@ -22,11 +22,3 @@ jobs:
           buildpack: "https://github.com/heroku/heroku-buildpack-python#latest"
           healthcheck: "https://sapo-staging-api.herokuapp.com/"
           delay: 5
-        env:
-          HD_FLASK_ENV: ${{secrets.FLASK_ENV}}
-          HD_DB_DIALECT: ${{secrets.DB_DIALECT}}
-          HD_DB_HOST: ${{secrets.DB_HOST_STAGING}}
-          HD_DB_PORT: ${{secrets.DB_PORT_STAGING}}
-          HD_DB_NAME: ${{secrets.DB_NAME_STAGING}}
-          HD_DB_USER: ${{secrets.DB_USER_STAGING}}
-          HD_DB_PASS: ${{secrets.DB_PASS_STAGING}}
