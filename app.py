@@ -19,16 +19,16 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
 @app.route('/')
-def response():
+def response_root():
+	return jsonify(health='healthy')
+
+@app.route('/foods')
+def response_foods():
 	cursor = mysql.connection.cursor()
 	cursor.execute('''SELECT * FROM foods''')
 	foods = cursor.fetchall()
 
 	return jsonify(foods)
-
-@app.route('/health')
-def response_health():
-	return jsonify(health='healthy')
 
 if __name__ == "__main__":
 	app.run(debug=True)
