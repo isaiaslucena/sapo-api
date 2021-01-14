@@ -27,5 +27,5 @@ def response():
 	return jsonify(foods)
 
 
-if os.getenv('DB_HOST') == 'development':
+if os.getenv('FLASK_ENV') == 'development':
 	app.run(debug=True)
