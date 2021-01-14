@@ -26,6 +26,9 @@ def response():
 
 	return jsonify(foods)
 
+@app.route('/health')
+def response_health():
+	return jsonify(health='healthy')
 
 if __name__ == "__main__":
 	app.run(debug=True)
