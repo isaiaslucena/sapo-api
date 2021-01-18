@@ -49,5 +49,6 @@ def response_fat():
 	cursor.execute('''SELECT * FROM foods ORDER BY fat DESC LIMIT 4''')
 	fat_foods = cursor.fetchall()
 	return jsonify(fat_foods)
+
 if __name__ == "__main__":
 	app.run(debug=True)
