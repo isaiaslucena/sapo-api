@@ -43,5 +43,11 @@ def response_protein():
 	protein_foods = cursor.fetchall()
 	return jsonify(protein_foods)
 
+@app.route('/fat_foods')
+def response_fat():
+	cursor = mysql.connection.cursor()
+	cursor.execute('''SELECT * FROM foods ORDER BY fat DESC''')
+	fat_foods = cursor.fetchall()
+	return jsonify(fat_foods)
 if __name__ == "__main__":
 	app.run(debug=True)
