@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 from flask_mysqldb import MySQL
 
 APP_ROOT = os.path.join(os.path.dirname(__file__), '.')
@@ -8,6 +9,8 @@ dotenv_path = os.path.join(APP_ROOT, '.env')
 load_dotenv(dotenv_path)
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 app.config['MYSQL_HOST'] = os.getenv('DB_HOST')
 app.config['MYSQL_PORT'] = int(os.getenv('DB_PORT'))
@@ -49,5 +52,6 @@ def response_fat():
 	cursor.execute('''SELECT * FROM foods ORDER BY fat DESC LIMIT 4''')
 	fat_foods = cursor.fetchall()
 	return jsonify(fat_foods)
+
 if __name__ == "__main__":
 	app.run(debug=True)
